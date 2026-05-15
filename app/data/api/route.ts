@@ -1,6 +1,11 @@
 import { headers, cookies } from "next/headers";
 import { comments } from "../data"
 import { type NextRequest } from "next/server";
+import { redirect } from "next/navigation";
+
+//redirect to other endpoint ,it gives 307 in browser
+redirect
+
 
 export async function GET(request: NextRequest) {
     // const requestHeaders = new Headers(request.headers)
