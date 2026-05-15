@@ -8,9 +8,16 @@ export async function GET(request: NextRequest) {
 
     const headerList = await headers();
     console.log(headerList.get("user-agent"))
+
+    //getting cookies
+    const theme = request.cookies.get("theme")
+    console.log(theme)
+
     return new Response("<h1>hello</h1>", {
         headers: {
-            "Content-Type": "text/html"
+            "Content-Type": "text/html",
+            // setting cookies
+            "Set-Cookie": "theme=dark"
         }
     })
 };
