@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { comments } from "../data"
 import { type NextRequest } from "next/server";
 
@@ -9,15 +9,23 @@ export async function GET(request: NextRequest) {
     const headerList = await headers();
     console.log(headerList.get("user-agent"))
 
-    //getting cookies
+    //getting cookies normal
     const theme = request.cookies.get("theme")
     console.log(theme)
+
+    //nextjs cookie
+    //setting a cookie
+    const cookieStore = await cookies();
+    cookieStore.set("resultsPerPage", "20", { httpOnly: true, secure: true })
+
+    //getting a cookie
+    console.log(cookieStore.get("resultsPerPage"))
 
     return new Response("<h1>hello</h1>", {
         headers: {
             "Content-Type": "text/html",
-            // setting cookies
-            "Set-Cookie": "theme=dark"
+            // setting cookies normal
+            "Set-Cookie": "theme=dark;HttpOnly;Secure; SameSite=Strict"
         }
     })
 };
