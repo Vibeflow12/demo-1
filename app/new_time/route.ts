@@ -1,7 +1,7 @@
 // it just cache the data ,it doesn't work in devlopment ,build the app > the start to see the result
-export const cachedTime = "force-static"
+export const dynamic = "force-static"
 
-//incremental static regenration ,10 is 10sec ,it doesn't work in devlopment ,build the app > the start to see the result
+//incremental static regeneration ,10 is 10sec ,it doesn't work in devlopment ,build the app > the start to see the result
 export const revalidate = 10
 
 
